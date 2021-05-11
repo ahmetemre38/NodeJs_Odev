@@ -61,7 +61,7 @@ const remove = async (req, res) => {
 const update = async (req, res) => {
     const user = {_id, username, email, password } = req.body;
     try {       
-        const data = await Users.updateOne({_id:user._id}, {user});  
+        const data = await Users.updateOne({_id:user._id}, { $set: user});  
         
         return res.json(data);
     } catch (error) {
