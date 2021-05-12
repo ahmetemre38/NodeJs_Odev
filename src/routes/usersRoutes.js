@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {register, find, findAll, remove, update } = require('../services/UserService.js')
+const {register, find, findAll, remove, update } = require('../services/userService.js')
 
 router.get('/:id', find);
 router.get('/', findAll);

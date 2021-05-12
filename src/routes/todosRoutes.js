@@ -1,27 +1,12 @@
 const express = require('express');
-
 const router = express.Router();
 
-const todosData = require('../data/todosData');
+const {register, find, findAll, remove, update } = require('../services/todoService.js')
 
-
-router.get('/', (req, res) => {
-    if (!req.query.userId)
-        res.json(todosData);
-
-    const { userId } = req.query;
-
-    const todo = todosData.filter(item => item.userId == userId);
-    res.json(todo)
-});
-
-router.delete('/:id', (req, res) => {
-    const id = req.params.id;
-
-    const result = todosData.filter(item => item.id != id);
-
-    res.send({ message: result });
-});
-
+router.get('/:id', find);
+router.get('/', findAll);
+router.post('/register', register);
+router.delete('/:id', remove);
+router.patch('/:id', update);
 
 module.exports = router;
